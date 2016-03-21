@@ -1,19 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="net.tianzx.freevoice.FreeVoiceActivity"
-    tools:showIn="@layout/activity_free_voice">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_above="@+id/refresh_img"
+        android:layout_alignParentStart="true">
+
+        <ImageButton
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:src="@drawable/ic_launcher"
+            android:id="@+id/self_img"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/self_info"
+            android:text="@string/self_info_tip"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/self_img"
+            android:layout_marginStart="95dp" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_above="@+id/ad"
+        android:layout_toEndOf="@+id/textView2"
+        android:id="@+id/relativeLayout2">
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/relativeLayout">
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="432dp"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_info"
+        android:textColor="#F36253"
+        android:textSize="30dip"
+        android:id="@+id/ad"
+        android:gravity="center_horizontal"
+        android:layout_weight="0.52"
+        android:layout_above="@+id/list_online"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="300dip"
+        android:id="@+id/list_online"
+        android:padding="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="86dp">
+    </ListView>
+
+    <ImageButton
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:src="@drawable/refresh"
+        android:id="@+id/refresh_img"
+        android:layout_above="@+id/ad"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="@string/refresh_pre_tip"
+        android:id="@+id/textView"
+        android:layout_alignTop="@+id/online_users"
+        android:layout_toEndOf="@+id/refresh_img" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/refresh_after_tip"
+        android:id="@+id/textView2"
+        android:layout_above="@+id/relativeLayout2"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/online_users"
+        android:text="@string/refresh_num_tip"
+        android:layout_alignBottom="@+id/refresh_img"
+        android:layout_toStartOf="@+id/textView2" />
 </RelativeLayout>

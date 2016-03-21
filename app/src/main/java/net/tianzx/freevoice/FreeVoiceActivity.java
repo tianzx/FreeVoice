@@ -8,6 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FreeVoiceActivity extends AppCompatActivity {
 
@@ -15,8 +19,29 @@ public class FreeVoiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_free_voice);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        initMain();
+    }
+
+    private void initMain() {
+        this.initSelfInfo();
+        this.initRefreshInfo();
+        this.initOnlineList();
+    }
+
+    private void initSelfInfo() {
+
+    }
+    private void initRefreshInfo(){
+
+    }
+    private void initOnlineList(){
+        final ListView online = (ListView) this.findViewById(R.id.list_online);
+//        online.setAdapter(adaptor);
+        List<UserModel> list = new ArrayList<UserModel>();
+        UserModel um = new UserModel();
+        um.setName("User One");
+        list.add(um);
+        online.setAdapter(new UserOnlineListAdapter(this,list));
     }
 
     @Override
@@ -35,11 +60,20 @@ public class FreeVoiceActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id){
+            case 1:
+                break;
+            case 2:
+                exit();
+                break;
         }
+        return true;
+    }
 
-        return super.onOptionsItemSelected(item);
+    private  void  exit() {
+        //exit
+        this.finish();
+        //
+        System.exit(0);
     }
 }
