@@ -1,5 +1,7 @@
 package net.tianzx.freevoice.udp;
 
+import net.tianzx.freevoice.CommonData;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -27,7 +29,7 @@ public class UdpSend extends Thread {
             sendUDP(toIp);
         }
         for (int i = 2; i < 255; i++) {
-            String ip = "192.168.199." + i;
+            String ip = CommonData.Instance.UDP_IP_PRE + i;
             sendUDP(ip);
         }
     }
@@ -40,7 +42,7 @@ public class UdpSend extends Thread {
             datagramPacket = new DatagramPacket(new byte[1024], 1024);
             datagramPacket.setData(this.sendMsg.getBytes());
             datagramPacket.setLength(this.sendMsg.length());
-            datagramPacket.setPort(12345);
+            datagramPacket.setPort(CommonData.Instance.UDP_PORT);
             InetAddress addr = InetAddress.getByName(ip);
             datagramPacket.setAddress(addr);
 

@@ -105,4 +105,5 @@
         android:text="@string/refresh_num_tip"
         android:layout_alignBottom="@+id/refresh_img"
         android:layout_toStartOf="@+id/textView2" />
+
 </RelativeLayout>
