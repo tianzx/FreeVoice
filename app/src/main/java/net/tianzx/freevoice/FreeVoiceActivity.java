@@ -31,25 +31,27 @@ public class FreeVoiceActivity extends AppCompatActivity {
     private void initSelfInfo() {
 
     }
-    private void initRefreshInfo(){
+
+    private void initRefreshInfo() {
 
     }
-    private void initOnlineList(){
+
+    private void initOnlineList() {
         final ListView online = (ListView) this.findViewById(R.id.list_online);
 //        online.setAdapter(adaptor);
         List<UserModel> list = new ArrayList<UserModel>();
         UserModel um = new UserModel();
         um.setName("User One");
         list.add(um);
-        online.setAdapter(new UserOnlineListAdapter(this,list));
+        online.setAdapter(new UserOnlineListAdapter(this, list));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_free_voice, menu);
-        menu.add(1,1,1,"参数设置");
-        menu.add(1,2,2,"退出");
+        menu.add(1, 1, 1, "参数设置");
+        menu.add(1, 2, 2, "退出");
         return true;
     }
 
@@ -60,7 +62,7 @@ public class FreeVoiceActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        switch (id){
+        switch (id) {
             case 1:
                 break;
             case 2:
@@ -70,7 +72,7 @@ public class FreeVoiceActivity extends AppCompatActivity {
         return true;
     }
 
-    private  void  exit() {
+    private void exit() {
         //exit
         this.finish();
         //

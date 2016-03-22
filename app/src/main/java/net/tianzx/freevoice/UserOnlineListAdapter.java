@@ -14,11 +14,13 @@ import java.util.List;
  */
 public class UserOnlineListAdapter extends BaseAdapter {
     private FreeVoiceActivity activity = null;
-    private List<UserModel> userList ;
-    public  UserOnlineListAdapter(FreeVoiceActivity activity, List<UserModel> userList){
+    private List<UserModel> userList;
+
+    public UserOnlineListAdapter(FreeVoiceActivity activity, List<UserModel> userList) {
         this.activity = activity;
         this.userList = userList;
     }
+
     @Override
     public int getCount() {
         return this.userList.size();
