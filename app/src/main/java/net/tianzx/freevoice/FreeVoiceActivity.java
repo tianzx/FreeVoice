@@ -1,5 +1,6 @@
 package net.tianzx.freevoice;
 
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,11 +11,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import net.tianzx.freevoice.receiver.UdpMsgReceiver;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class FreeVoiceActivity extends AppCompatActivity {
 
+    private UdpMsgReceiver udpMsgReceiver = new UdpMsgReceiver(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,4 +82,19 @@ public class FreeVoiceActivity extends AppCompatActivity {
         //
         System.exit(0);
     }
+    /**
+     * BroadcastRecevier register
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.registerReceiver(udpMsgReceiver,new IntentFilter(CommonData.Instance.RECEIVER_UDP_MSG));
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+
 }

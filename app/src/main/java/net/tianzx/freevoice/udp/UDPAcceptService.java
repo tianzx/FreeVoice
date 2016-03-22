@@ -49,7 +49,10 @@ public class UDPAcceptService extends Service{
                         String theMsg = new String(data,0,udpPacket.getLength());
                         //1:return to surface
                             //func: use broadcast
-
+                        Intent in = new Intent();
+                        in.setAction(CommonData.Instance.RECEIVER_UDP_MSG);
+                        in.putExtra(CommonData.Instance.UDP_MSG,theMsg);
+                        sendBroadcast(in);
                     }
                 }
             }
