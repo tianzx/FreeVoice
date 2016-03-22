@@ -17,6 +17,7 @@ import java.net.SocketException;
  */
 public class UDPAcceptService extends Service{
 
+    private boolean needRunServer = true;
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -31,17 +32,24 @@ public class UDPAcceptService extends Service{
             @Override
             public void run() {
                 DatagramSocket udpSocket = null;
-                DatagramPacket udpPacket = new DatagramPacket(new byte[1024],1024);
+                byte data[] = new byte[1024];
+                DatagramPacket udpPacket = new DatagramPacket(data,data.length);
                 try {
                     udpSocket = new DatagramSocket(CommonData.Instance.UDP_PORT);
                 } catch (SocketException e) {
                     e.printStackTrace();
                 }
-                while (true){
+                while (needRunServer){
                     try {
                         udpSocket.receive(udpPacket);
                     } catch (IOException e) {
                         e.printStackTrace();
+                    }
+                    if(udpPacket.getLength()!=0){
+                        String theMsg = new String(data,0,udpPacket.getLength());
+                        //1:return to surface
+                            //func: use broadcast
+
                     }
                 }
             }
@@ -50,4 +58,9 @@ public class UDPAcceptService extends Service{
         return super.onStartCommand(intent, flags, startId);
     }
 
+    @Override
+    public boolean stopService(Intent name) {
+        needRunServer = false;
+        return super.stopService(name);
+    }
 }
